@@ -1,6 +1,7 @@
 package com.bridzelabz.userregistrationprogram;
 
 import java.util.Scanner;
+import java.util.function.Predicate;
 import java.util.regex.Pattern;
 
 public class UserRegistration {
@@ -11,52 +12,75 @@ public class UserRegistration {
 	public final String phonePattern = "^[0-9]{2}[0-9]{10}$";
 	public final String passwordPattern = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&-+=()]).{8,}$";
 
+
 	/**
 	 * This method checks if the entered first name is valid
 	 */
-	public boolean validateFirstName(String fname) {
-		Pattern pattern = Pattern.compile(firstNamePattern);
-		return pattern.matcher(fname).matches();
-	}
+	public boolean validateFirstName(String fname) throws UserRegistrationException {
+			Predicate<String> validateFirstName1 = n -> n.matches(firstNamePattern);
+		boolean result = validateFirstName1.test(fname);
 
-	public boolean validateLastName(String lname) {
-		Pattern pattern = Pattern.compile(lastNamePattern);
-		return pattern.matcher(lname).matches();
-	}
-
-	/**
-	 * This method checks if the entered email is valid
-	 */
-	public boolean validateEmail(String email) {
-		Pattern pattern = Pattern.compile(emailPattern);
-		return pattern.matcher(email).matches();
-	}
-
-	/**
-	 * This method checks if the entered phone number is valid
-	 */
-	public boolean validatePhone(String phone) {
-		Pattern pattern = Pattern.compile(phonePattern);
-		return pattern.matcher(phone).matches();
-	}
-
-	/**
-	 * This method checks if the entered password is valid
-	 */
-	public boolean validatePassword(String password) {
-		Pattern pattern = Pattern.compile(passwordPattern);
-		return pattern.matcher(password).matches();
-	}
-
-	/**
-	 * Method for printing validate email output;
-	 */
-	public void emailTest(String email) {
-		System.out.print(email + "->");
-		if (validateEmail(email)) {
-			System.out.printf("Email Valid \n");
+		if (result == true) {
+			return true;
 		} else {
-			System.out.printf("Email Invalid \n");
+			throw new UserRegistrationException("Enter Valid First Name");
+		}
+
+	}
+
+	/**
+	 *  This method checks if the entered lawst name is valid
+	 */
+	public boolean validateLastName(String lname) throws UserRegistrationException {
+		
+		Predicate<String> validateLast = n -> n.matches(firstNamePattern);
+		boolean result = validateLast.test(lname);
+		if (result == true) {
+			return true;
+		} else {
+			throw new UserRegistrationException("Enter Valid First Name");
+		}
+	}
+
+	/**
+	 *  This method checks if the entered email is valid
+	 */
+	public boolean validateEmail(String email) throws UserRegistrationException {
+		
+		Predicate<String> validateEmail = n -> n.matches(EMAIL_PATTERN);
+		boolean result = validateEmail.test(email);
+		if (result == true) {
+			return true;
+		} else {
+			throw new UserRegistrationException("Enter Valid First Name");
+		}
+	}
+
+	/**
+	 *  This method checks if the entered phone number is valid
+	 */
+	public boolean validatePhone(String phone) throws UserRegistrationException {
+		
+		Predicate<String> validatePhone = n -> n.matches(PHONE_PATTERN);
+		boolean result = validatePhone.test(phone);
+		if (result == true) {
+			return true;
+		} else {
+			throw new UserRegistrationException("Enter Valid First Name");
+		}
+	}
+
+	/**
+	 *  This method checks if the entered password is valid
+	 */
+	public boolean validatePassword(String password) throws UserRegistrationException {
+		
+		Predicate<String> validateFirstName1 = n -> n.matches(PASSWORD_PATTERN);
+		boolean result = validateFirstName1.test(password);
+		if (result == true) {
+			return true;
+		} else {
+			throw new UserRegistrationException("Enter Valid First Name");
 		}
 	}
 
