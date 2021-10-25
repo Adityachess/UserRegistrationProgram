@@ -1,7 +1,8 @@
 package com.bridzelabz.userregistrationprogram;
 
-import org.junit.Test;
 import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
 
 public class UserRegTest {
 	@Test
@@ -10,7 +11,7 @@ public class UserRegTest {
 		try {
 			boolean result = object.validateFirstName("Firstnameexample");
 			assertEquals(true, result);
-		} catch (Exception e) {
+		} catch (UserRegistrationException e) {
 			e.printStackTrace();
 		}
 	}
@@ -21,7 +22,7 @@ public class UserRegTest {
 		try {
 			boolean result = object.validateFirstName("firstnameexample");
 			assertEquals(true, result);
-		} catch (Exception e) {
+		} catch (UserRegistrationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -33,7 +34,7 @@ public class UserRegTest {
 		try {
 			boolean result = object.validateLastName("Lastnameexample");
 			assertEquals(true, result);
-		} catch (Exception e) {
+		} catch (UserRegistrationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -45,7 +46,7 @@ public class UserRegTest {
 		try {
 			boolean result = object.validateLastName("lastnameexample");
 			assertEquals(true, result);
-		} catch (Exception e) {
+		} catch (UserRegistrationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -57,7 +58,7 @@ public class UserRegTest {
 		try {
 			boolean result = object.validateEmail("example.correct@mail.com");
 			assertEquals(true, result);
-		} catch (Exception e) {
+		} catch (UserRegistrationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
