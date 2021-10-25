@@ -9,7 +9,7 @@ public class UserRegistration {
 	public final String lastNamePattern = "^[A-Z]{1}[a-z]{2,}$";
 	public final String emailPattern = "[a-z0-9_]*[.a-z0-9_]*?@[a-z]*.[a-z]*[.a-z]?$";
 	public final String phonePattern = "^[0-9]{2}[0-9]{10}$";
-	public final String passwordPattern = "^.{8,}";
+	public final String passwordPatternSecond = "^(?=.*[A-Z]).{8,}$";
 
 	/**
 	 * This method checks if the entered first name is valid
@@ -40,15 +40,14 @@ public class UserRegistration {
 		return pattern.matcher(phone).matches();
 	}
 
-	// This method checks if the entered password is valid
+	/**
+	 * This method checks if the entered password is valid
+	 */
 	public boolean validatePassword(String password) {
-		Pattern pattern = Pattern.compile(passwordPattern);
+		Pattern pattern = Pattern.compile(passwordPatternSecond);
 		return pattern.matcher(password).matches();
 	}
 
-	/**
-	 * This is the main function
-	 */
 	public static void main(String[] args) {
 
 		System.out.println("Enter First Name: ");
