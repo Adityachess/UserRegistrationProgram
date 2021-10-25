@@ -9,11 +9,10 @@ public class UserRegistration {
 	public final String lastNamePattern = "^[A-Z]{1}[a-z]{2,}$";
 	public final String emailPattern = "[a-z0-9_]*[.a-z0-9_]*?@[a-z]*.[a-z]*[.a-z]?$";
 	public final String phonePattern = "^[0-9]{2}[0-9]{10}$";
+	public final String passwordPattern = "^.{8,}";
 
 	/**
 	 * This method checks if the entered first name is valid
-	 * 
-	 * @return
 	 */
 	public boolean validateFirstName(String fname) {
 		Pattern pattern = Pattern.compile(firstNamePattern);
@@ -41,10 +40,14 @@ public class UserRegistration {
 		return pattern.matcher(phone).matches();
 	}
 
+	// This method checks if the entered password is valid
+	public boolean validatePassword(String password) {
+		Pattern pattern = Pattern.compile(passwordPattern);
+		return pattern.matcher(password).matches();
+	}
+
 	/**
 	 * This is the main function
-	 * 
-	 * @param args
 	 */
 	public static void main(String[] args) {
 
@@ -80,6 +83,13 @@ public class UserRegistration {
 			System.out.println("Phone No. Valid");
 		} else {
 			System.out.println("Phone No. Invalid");
+		}
+		System.out.println("\nEnter Password (Min 8 characters): ");
+		String password = sc.next();
+		if (obj.validatePassword(password)) {
+			System.out.println("Password Valid");
+		} else {
+			System.out.println("Password Invalid");
 		}
 	}
 }
